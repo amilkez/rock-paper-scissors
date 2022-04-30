@@ -36,10 +36,18 @@ function playRound(playerSelection, computerSelection) {
 		} else if (computerSelection === "scissors") {
 			return loseGame(playerSelection, computerSelection);
 		}
+	} else if (playerSelection === "scissors") {
+		if (computerSelection === "rock") {
+			return loseGame(playerSelection, computerSelection);
+		} else if (computerSelection === "paper") {
+			return winGame(playerSelection, computerSelection);
+		} else if (computerSelection === "scissors") {
+			return draw();
+		}
 	}
 }
 
-const playerSelection = "paper";
+const playerSelection = "scissors";
 const computerSelection = computerPlay();
 
 console.log(playRound(playerSelection, computerSelection));
