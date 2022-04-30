@@ -35,20 +35,26 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-	let score = 0;
-	const playerSelection = prompt();
-	for (let i = 0; i < 5; i++) {
-		const computerSelection = computerPlay();
-		let output = playRound(playerSelection, computerSelection);
-		if (output === "win") {
-			score++;
-		} else if (output === "lose") {
-			score--;
-		}
-	}
-	if (score > 0) {
-		return "You win!";
-	} else {
-		return "Better luck next time!";
-	}
+	const btns = document.querySelectorAll(".btn");
+	let playerScore = 0;
+	let computerScore = 0;
+	btns.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			const playerSelection = btn.innerText;
+			const computerSelection = computerPlay();
+			const output = playRound(playerSelection, computerSelection);
+			if (output === "win") {
+				playerScore++;
+			} else if (output === "lose") {
+				computerScore++;
+			}
+			if (playerScore >= 5) {
+				return `You have won! Your Score:${playerScore} vs ${computerScore}`;
+			} else if (computerScore >= 5) {
+				return `You have lost! Your Score:${playerScore} vs ${computerScore}`;
+			}
+		});
+	});
 }
+
+game();
