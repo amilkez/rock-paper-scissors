@@ -22,32 +22,48 @@ function playRound(playerSelection, computerSelection) {
 
 	if (playerSelection === "rock") {
 		if (computerSelection === "rock") {
-			return draw();
+			return "draw";
 		} else if (computerSelection === "paper") {
-			return loseGame(playerSelection, computerSelection);
+			return "lose";
 		} else if (computerSelection === "scissors") {
-			return winGame(playerSelection, computerSelection);
+			return "win";
 		}
 	} else if (playerSelection === "paper") {
 		if (computerSelection === "rock") {
-			return winGame(playerSelection, computerSelection);
+			return "win";
 		} else if (computerSelection === "paper") {
-			return draw();
+			return "draw";
 		} else if (computerSelection === "scissors") {
-			return loseGame(playerSelection, computerSelection);
+			return "lose";
 		}
 	} else if (playerSelection === "scissors") {
 		if (computerSelection === "rock") {
-			return loseGame(playerSelection, computerSelection);
+			return "lose";
 		} else if (computerSelection === "paper") {
-			return winGame(playerSelection, computerSelection);
+			return "win";
 		} else if (computerSelection === "scissors") {
-			return draw();
+			return "draw";
 		}
 	}
 }
 
-const playerSelection = "scissors";
-const computerSelection = computerPlay();
+function game() {
+	let score = 0;
+	const playerSelection = prompt();
+	for (let i = 0; i < 5; i++) {
+		const computerSelection = computerPlay();
+		let output = playRound(playerSelection, computerSelection);
+		if (output === "win") {
+			score++;
+		} else if (output === "lose") {
+			score--;
+		}
+	}
+	if (score > 0) {
+		return "You win!";
+	} else {
+		return "Better luck next time!";
+	}
+}
 
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
