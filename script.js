@@ -10,3 +10,8 @@ function loseGame(playerSel, computerSel) {
 function draw() {
 	return "No one wins, play again!";
 }
+
+function computerPlay() {
+	const randomNum = Math.ceil(Math.random() * 3);
+	return randomNum === 1 ? "Rock" : randomNum === 2 ? "Paper" : "Scissors";
+}
