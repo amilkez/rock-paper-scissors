@@ -28,10 +28,18 @@ function playRound(playerSelection, computerSelection) {
 		} else if (computerSelection === "scissors") {
 			return winGame(playerSelection, computerSelection);
 		}
+	} else if (playerSelection === "paper") {
+		if (computerSelection === "rock") {
+			return winGame(playerSelection, computerSelection);
+		} else if (computerSelection === "paper") {
+			return draw();
+		} else if (computerSelection === "scissors") {
+			return loseGame(playerSelection, computerSelection);
+		}
 	}
 }
 
-const playerSelection = "rock";
+const playerSelection = "paper";
 const computerSelection = computerPlay();
 
 console.log(playRound(playerSelection, computerSelection));
