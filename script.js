@@ -39,6 +39,7 @@ function game() {
 	const body = document.body;
 	let playerScore = 0;
 	let computerScore = 0;
+
 	btns.forEach((btn) => {
 		btn.addEventListener("click", () => {
 			const playerSelection = btn.innerText;
@@ -50,9 +51,10 @@ function game() {
 			} else if (output === "lose") {
 				computerScore++;
 			}
-			if (playerScore >= 5) {
+			if (playerScore === 5) {
 				div.innerText = `You have won! Your Score:${playerScore} vs ${computerScore}`;
-			} else if (computerScore >= 5) {
+			}
+			if (computerScore === 5) {
 				div.innerText = `You have lost! Your Score:${playerScore} vs ${computerScore}`;
 			}
 			body.appendChild(div);
